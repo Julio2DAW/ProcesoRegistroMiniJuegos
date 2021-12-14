@@ -18,6 +18,12 @@ CREATE TABLE usuario(
 CREATE TABLE minijuego(
     idMinijuego tinyint unsigned AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(40) UNIQUE NOT NULL,
-    url
-    descripcion
+    url text NOT NULL,
+    descripcion text NOT NULL
 );
+
+CREATE TABLE preferencia(
+    idUsuario smallint unsigned,
+    idMinijuego tinyint unsigned,
+    PRIMARY KEY(idUsuario, idMinijuego)
+)
