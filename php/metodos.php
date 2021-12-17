@@ -1,30 +1,43 @@
 <?php
-    require 'config.php';
 
     class Metodos{
 
-        protected $conexion;
-
         function __construct(){
-            $this->conexion = new mysqli(SERVER, USER, PASSWORD, DATABASE);
-            if($this->conexion->connect_errno){
-                echo 'Se ha producido un error: '.$this->conexion->connect_error;
-            }
+            require 'config.php';
+            $this->conexion = mysqli_connect(SERVER, USER, PASSWORD, DATABASE);
+        }
+
+        function consultar($consulta){
+            return $this->conexion->query($consulta);
         }
 
         function registro(){
-            $sql = 'INSERT INTO usuario (nick, password, email) VALUES ("'.$_POST['nick'].'", "'.$_POST['password'].'", "'.$_POST['email'].'")';
-            $resultado = $this->conexion->query($sql);
-            
-            if($resultado){
-                echo 'El jugador ha sido agragado';
-            }else{
-                echo 'El jugador no ha sido agregado';
+
+            if(isset($_POST['enviar'])){
+
+                $consulta = "INSERT INTO usuario (nick, password, email) VALUES ('".$_POST['nick']."','".$_POST['password']."','".$_POST['email']."');";
+                $resultado = $this->consultar($consulta);
             }
         }
 
         function iniciar_sesion(){
-            
+
+            if(isset($_POST['enviar'])){
+
+                $consulta = "SELECT * FROM usuario WHERE nick ='".$_POST['nick']."' and password ='".$_POST['password']."';";
+                $resultado = $this->consultar($consulta);
+
+                $fila=$resultado->fetch_array(MYSQL_ASSOC);
+
+                if($fila){
+
+                    $_SESSION['idUsuario']=$fila['idUsuario'];
+                    $_SESSION['nick']=$fila['nick'];
+                }else{
+
+                    echo 'Algo falló en el inicio de sesión';
+                }
+            }
         }
     }
 ?>

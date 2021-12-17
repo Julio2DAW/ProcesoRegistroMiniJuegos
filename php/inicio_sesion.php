@@ -1,7 +1,8 @@
 <?php
+    
     require 'metodos.php';
-
-    $conexion = new Metodos()
+    $metodos = new Metodos();
+    $metodos -> iniciar_sesion();
 ?>
 <!DOCTYPE html>
 <!--Julio Antonio Ramos Gago-->
@@ -27,7 +28,7 @@
                 <form action="inicio_sesion.php" method="post">
                     <input type="text" name="nick" placeholder="Introduce Nick" />
                     <input type="password" name="password" placeholder="Ingrese Password" />
-                    <input type="submit" value="Enviar" />
+                    <input type="submit" name="enviar" value="Enviar" />
                 </form>
             </section>
         </main>

@@ -1,3 +1,9 @@
+<?php
+    
+    require 'metodos.php';
+    $metodos = new Metodos();
+    $metodos -> registro();
+?>
 <!DOCTYPE html>
 <!--Julio Antonio Ramos Gago-->
 <html lang="es">
@@ -20,19 +26,11 @@
         <main>
             <section>
                 <form action="registro.php" method="post">
-                    <input type="text" id="nick" placeholder="Introduce Nick" />
-                    <input type="email" id="email" placeholder="Ingrese mail" />
-                    <input type="password" id="password" placeholder="Ingrese Password" />
-                    <input type="submit" id="enviar" value="Enviar" />
+                    <input type="text" name="nick" placeholder="Introduce Nick" />
+                    <input type="password" name="password" placeholder="Ingrese Password" />
+                    <input type="email" name="email" placeholder="Ingrese mail" />
+                    <input type="submit" name="enviar" value="Enviar" />
                 </form>
-                <?php
-                    require 'metodos.php';
-                    $conexion = new Metodos();
-
-                    if(isset($_POST['enviar'])){
-                        $conexion->registro();
-                    }
-                ?>
             </section>
         </main>
         <footer>
