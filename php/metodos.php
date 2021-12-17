@@ -2,6 +2,8 @@
 
     class Metodos{
 
+        public $conexion;
+        
         function __construct(){
             require 'config.php';
             $this->conexion = mysqli_connect(SERVER, USER, PASSWORD, DATABASE);

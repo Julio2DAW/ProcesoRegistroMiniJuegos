@@ -2,7 +2,6 @@
     
     require 'metodos.php';
     $metodos = new Metodos();
-    $metodos -> registro();
 ?>
 <!DOCTYPE html>
 <!--Julio Antonio Ramos Gago-->
@@ -31,6 +30,10 @@
                     <input type="email" name="email" placeholder="Ingrese mail" />
                     <input type="submit" name="enviar" value="Enviar" />
                 </form>
+                <?php
+                
+                    $metodos -> registro();
+                ?>
             </section>
         </main>
         <footer>

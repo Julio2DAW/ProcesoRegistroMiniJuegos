@@ -2,7 +2,6 @@
     
     require 'metodos.php';
     $metodos = new Metodos();
-    $metodos -> iniciar_sesion();
 ?>
 <!DOCTYPE html>
 <!--Julio Antonio Ramos Gago-->
@@ -30,6 +29,10 @@
                     <input type="password" name="password" placeholder="Ingrese Password" />
                     <input type="submit" name="enviar" value="Enviar" />
                 </form>
+                <?php
+                    
+                    $metodos -> iniciar_sesion();
+                ?>
             </section>
         </main>
         <footer>
